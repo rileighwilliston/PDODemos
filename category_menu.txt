@@ -1,0 +1,7 @@
+SELECT id, category,Summary.total 
+                FROM categories JOIN (SELECT COUNT(*) AS total, 
+                                      category_id
+                                      FROM pages
+                                      GROUP BY category_id) AS Summary
+                WHERE categories.id = Summary.category_id
+                ORDER BY category
